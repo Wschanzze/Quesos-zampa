@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import HeroSection from './home/components/HeroSection';
 import MarqueeStrip from './home/components/MarqueeStrip';
 import MomentSection from './home/components/MomentSection';
@@ -33,10 +33,8 @@ const moments = [
   imagePosition: 'center 40%'
 }];
 
-
 export default function RootPage() {
   useEffect(() => {
-    // Global scroll reveal observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -48,33 +46,30 @@ export default function RootPage() {
       { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
     );
 
-    document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-left')?.forEach((el) => {
-      observer?.observe(el);
+    const elements = document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-left');
+    elements.forEach((el) => {
+      observer.observe(el);
     });
 
-    return () => observer?.disconnect();
+    return () => observer.disconnect();
   }, []);
 
   return (
     <main className="bg-parchment overflow-x-hidden">
       <Header />
-      {/* 1. Hero — full-bleed cinematic photo */}
       <HeroSection />
-      {/* Marquee strip */}
       <MarqueeStrip />
-      {/* 2–4. Three moment sections — morning, trail, evening */}
-      {moments?.map((moment, i) =>
-      <MomentSection
-        key={moment?.time}
-        time={moment?.time}
-        caption={moment?.caption}
-        imageSrc={moment?.imageSrc}
-        imageAlt={moment?.imageAlt}
-        imagePosition={moment?.imagePosition}
-        index={i} />
-
-      )}
-      {/* Parchment interlude between moments and seasons */}
+      {moments.map((moment, i) => (
+        <MomentSection
+          key={i}
+          time={moment.time}
+          caption={moment.caption}
+          imageSrc={moment.imageSrc}
+          imageAlt={moment.imageAlt}
+          imagePosition={moment.imagePosition}
+          index={i}
+        />
+      ))}
       <div className="py-16 md:py-20 px-6 md:px-10 text-center" style={{ backgroundColor: 'var(--parchment)' }}>
         <div className="max-w-xl mx-auto">
           <div className="ornament mb-8 reveal-fade">
@@ -89,7 +84,6 @@ export default function RootPage() {
               lineHeight: 1.5,
               letterSpacing: '-0.01em'
             }}>
-            
             "The land doesn't rush. Neither do we. Come for a weekend — most guests start thinking about coming back before they've finished their first ride."
           </p>
           <p className="font-sans text-sage text-xs tracking-stamp uppercase mt-6 reveal-up delay-200">
@@ -97,13 +91,10 @@ export default function RootPage() {
           </p>
         </div>
       </div>
-      {/* 5. Seasonal rotation */}
       <SeasonSection />
-      {/* 6. Experience types — bento grid */}
       <ExperienceSection />
-      {/* 7. Final CTA */}
       <FinalCTA />
       <Footer />
-    </main>);
-
+    </main>
+  );
 }
