@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import AppImage from '@/components/ui/AppImage';
+import Image from 'next/image';
 
 const seasons = [
 {
@@ -87,7 +87,7 @@ export default function SeasonSection() {
 
               {/* Image */}
               <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-                <AppImage
+                <Image
                 src={s?.image}
                 alt={s?.imageAlt}
                 fill

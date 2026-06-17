@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import HeroSection from './home/components/HeroSection';
 import MarqueeStrip from './home/components/MarqueeStrip';
 import MomentSection from './home/components/MomentSection';
