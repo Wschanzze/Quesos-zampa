@@ -1,12 +1,17 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import HeroSection from './home/components/HeroSection';
 import MarqueeStrip from './home/components/MarqueeStrip';
 import MomentSection from './home/components/MomentSection';
 import SeasonSection from './home/components/SeasonSection';
 import ExperienceSection from './home/components/ExperienceSection';
 import FinalCTA from './home/components/FinalCTA';
+
+// Use relative imports
+const Header = dynamic(() => import('../components/Header'), { ssr: true });
+const Footer = dynamic(() => import('../components/Footer'), { ssr: true });
 
 const moments = [
 {
@@ -53,8 +58,10 @@ export default function RootPage() {
   }, []);
 
   return (
-    <main className="bg-parchment overflow-x-hidden">
-      <HeroSection />
+    <>
+      <Header />
+      <main className="bg-parchment overflow-x-hidden">
+        <HeroSection />
       <MarqueeStrip />
       {moments.map((moment, i) => (
         <MomentSection
@@ -88,9 +95,11 @@ export default function RootPage() {
           </p>
         </div>
       </div>
-      <SeasonSection />
-      <ExperienceSection />
-      <FinalCTA />
-    </main>
+        <SeasonSection />
+        <ExperienceSection />
+        <FinalCTA />
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -1,12 +1,17 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import HeroSection from './components/HeroSection';
 import MarqueeStrip from './components/MarqueeStrip';
 import MomentSection from './components/MomentSection';
 import SeasonSection from './components/SeasonSection';
 import ExperienceSection from './components/ExperienceSection';
 import FinalCTA from './components/FinalCTA';
+
+// Use relative imports for Header and Footer
+const Header = dynamic(() => import('../../components/Header'), { ssr: true });
+const Footer = dynamic(() => import('../../components/Footer'), { ssr: true });
 
 const moments = [
 {
@@ -54,9 +59,11 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="bg-parchment overflow-x-hidden">
-      {/* 1. Hero — full-bleed cinematic photo */}
-      <HeroSection />
+    <>
+      <Header />
+      <main className="bg-parchment overflow-x-hidden">
+        {/* 1. Hero — full-bleed cinematic photo */}
+        <HeroSection />
       {/* Marquee strip */}
       <MarqueeStrip />
       {/* 2–4. Three moment sections — morning, trail, evening */}
@@ -98,8 +105,10 @@ export default function HomePage() {
       <SeasonSection />
       {/* 6. Experience types — bento grid */}
       <ExperienceSection />
-      {/* 7. Final CTA */}
-      <FinalCTA />
-    </main>
+        {/* 7. Final CTA */}
+        <FinalCTA />
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import AppLogo from '@/components/ui/AppLogo';
+import AppLogo from './ui/AppLogo';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
