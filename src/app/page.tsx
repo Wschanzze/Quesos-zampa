@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import HeroSection from './home/components/HeroSection';
 import MarqueeStrip from './home/components/MarqueeStrip';
 import MomentSection from './home/components/MomentSection';
@@ -56,7 +54,6 @@ export default function RootPage() {
 
   return (
     <main className="bg-parchment overflow-x-hidden">
-      <Header />
       <HeroSection />
       <MarqueeStrip />
       {moments.map((moment, i) => (
@@ -94,7 +91,6 @@ export default function RootPage() {
       <SeasonSection />
       <ExperienceSection />
       <FinalCTA />
-      <Footer />
     </main>
   );
 }
