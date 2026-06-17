@@ -3,12 +3,12 @@
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import HeroSection from '../app/home/components/HeroSection';
-import MarqueeStrip from '../app/home/components/MarqueeStrip';
-import MomentSection from '../app/home/components/MomentSection';
-import SeasonSection from '../app/home/components/SeasonSection';
-import ExperienceSection from '../app/home/components/ExperienceSection';
-import FinalCTA from '../app/home/components/FinalCTA';
+import HeroSection from './home/components/HeroSection';
+import MarqueeStrip from './home/components/MarqueeStrip';
+import MomentSection from './home/components/MomentSection';
+import SeasonSection from './home/components/SeasonSection';
+import ExperienceSection from './home/components/ExperienceSection';
+import FinalCTA from './home/components/FinalCTA';
 
 const moments = [
 {
